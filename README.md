@@ -1,6 +1,12 @@
-# Siggraph 2019 OptiX 7 Course Tutorial Code
+# Siggraph 2019/2020 OptiX 7/7.1 Course Tutorial Code
 
 ## Latest Updates:
+
+* 10/21/2020: Bugfix: all moduleCompileOptions and
+  pipelineCompileOptions are now properly zero-initialized by default.
+  Otherwise, variables not set in these struct might have invalid values.
+
+* 8/3/2020: Updated to also compile on OptiX 7.1
 
 * 1/3/2020: Several fixes and documentation adds to make project
   compile with CentOS 7 (ie, oder gcc)
@@ -62,7 +68,7 @@ enough to support OptiX).
 - OptiX 7 SDK
     - download from http://developer.nvidia.com/optix and click "Get OptiX"
     - on linux, suggest to set the environment variable `OptiX_INSTALL_DIR` to wherever you installed the SDK.  
-    `export OptiX_INSTALL_DIR=<wherever you installed OptiX 7.0 SDK>`
+    `export OptiX_INSTALL_DIR=<wherever you installed OptiX 7 SDK>`
     - on windows, the installer should automatically put it into the right directory
 
 The only *external* library we use is GLFW for windowing, and
@@ -75,14 +81,9 @@ Detailed steps below:
 
 - Install required packages
 
-    - on Debian/Ubuntu:
-```
-    sudo apt install libglfw3-dev cmake-curses-gui
-```
-    - on RedHat/CentOS/Fedoral (tested CentOS 7.7):
-```
-    sudo yum install cmake3 glfw-devel freeglut-devel
-```
+    - on Debian/Ubuntu: `sudo apt install libglfw3-dev cmake-curses-gui`
+    - on RedHat/CentOS/Fedora (tested CentOS 7.7): `sudo yum install cmake3 glfw-devel freeglut-devel`
+
 - Clone the code
 ```
     git clone https://gitlab.com/ingowald/optix7course.git
@@ -96,14 +97,8 @@ Detailed steps below:
 ```
 
 - configure with cmake
-    - Ubuntu:
-```
-    cmake ..
-```
-    - CentOS 7:
-```
-    cmake3 ..
-```
+    - Ubuntu: `cmake ..`
+    - CentOS 7: `cmake3 ..`
 
 - and build
 ```
